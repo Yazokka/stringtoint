@@ -6,7 +6,7 @@ int main()
 	int input, count = 0, sum = 0;
 	float medium;
 
-	printf("Gimme input");
+	printf("Gimme input \n");
 scanning : scanf("%d", &input);
 
 	while(input != 0)
@@ -19,7 +19,7 @@ scanning : scanf("%d", &input);
 		}
 		else
 		{
-			printf("Numar gresit");
+			printf("Numar gresit \n");
 			goto scanning;
 		}
 	}
