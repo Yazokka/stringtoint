@@ -8,7 +8,13 @@ int main()
 
 	scanf("%d", &razmer);
 
-	if (razmer >= 69)
+	if (razmer == 69)
+	{
+		printf("U got dirty mind :/");
+		return 0;
+	}
+
+	if (razmer > 69)
 	{
 		printf(" \n The hui is too big \n");
 		return 0;
