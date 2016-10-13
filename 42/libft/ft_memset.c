@@ -1,17 +1,20 @@
 #include <stdio.h>
 #include <string.h>
 
-char ft_memset(char *str, char replace, int lenght)
+void *  ft_memset(void *str, int replace, size_t lenght)
 {
-	int index;
+	unsigned char *cur;
 
-	index = 0;
-	while (index < lenght)
+	if (lenght == 0)
+		return str;
+	cur = (unsigned char *) str;
+	while (lenght != 0)
 	{
-		str[index] = replace;
-		index++;
+		*cur = (unsigned char) replace;
+		if (lenght)
+			cur++;
 	}
-	return *str;
+	return str;
 }
 
 int main()
@@ -19,7 +22,7 @@ int main()
 	char str[50] = "Hello World";
 	
 	printf("%s \n", str);
-	ft_memset(str, '5', 6);
+	ft_memset(str, 's', 5);
 	printf("%s", str);
 
 	return 0;
