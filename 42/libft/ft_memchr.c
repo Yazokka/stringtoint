@@ -1,13 +1,16 @@
-#include <stdio.h>
 #include <string.h>
 
-int main(void)
+void    *ft_memchr(const void *s, int c, size_t n)
 {
-	  char *p;
+        unsigned char   *cur;
 
-	    p = memchr("строка из примера", 'a', 5);
-	      puts(p);
-
-	        return 0;
-} 
-
+        cur = (unsigned char *)s;
+        while (n--)
+        {
+                if (*cur == c)
+                        return (cur);
+                if (n)
+                        cur++;
+        }
+        return (NULL);
+}
