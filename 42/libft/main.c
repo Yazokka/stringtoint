@@ -4,11 +4,9 @@
 
 int main()
 {
-	char str1[50] = "";
-	char str2[50] = "";
+	char str1[50] = "12";
+	char str2[50] = "12";
 	char *dest;
 
-	dest = ft_memchr(str1, str2, 4);
-
-	printf("%s", str1);
+	ft_strequ(str1, str2);
 }
