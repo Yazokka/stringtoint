@@ -27,7 +27,6 @@ typedef struct		s_str
 	size_t			l;
 }					t_str;
 
-t_str	*ft_itot_str(int n);
 void	ft_t_strcat(t_str *s1, t_str *s2);
 char	*ft_t_strchr(t_str *str, char c);
 int		ft_t_strcmp(t_str *str1, t_str *str2);
@@ -36,7 +35,6 @@ t_str	*ft_t_strcutchr(t_str *str, char c);
 void	ft_t_strdel(t_str **str);
 t_str	*ft_t_strdup(t_str *orig);
 t_str	*ft_t_strjoin(t_str *s1, t_str *s2);
-t_str	*ft_t_strnew(char *s, size_t size);
 t_str	*ft_t_strsub(t_str *str, size_t start, size_t size);
 int		ft_t_strtoi(t_str *str);
 char	*ft_t_strtostr(t_str *str);
@@ -45,6 +43,7 @@ char	*ft_t_strtostr(t_str *str);
 
 #ifndef FT_STRS_H
 # define FT_STRS_H
+
 
 char	*ft_strcat(char *s1, const char *s2);
 char	*ft_strchr(const char *s, int c);
@@ -124,30 +123,6 @@ void	ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
 #endif /* !FT_LSTS_H */
-
-#ifndef FT_GLSTS_H
-# define FT_GLSTS_H
-
-typedef struct		s_glist
-{
-	void			*content;
-	struct s_glist	*next;
-}					t_glist;
-
-t_glist		*ft_glstcpy(t_glist *link);
-void		ft_glstdel(t_glist **start, void (*del)(void **ct));
-void		ft_glstdelone(t_glist **link, void (*del)(void **ct));
-t_glist		*ft_glstdup(t_glist *orig, void *(*dup)(void *ct), \
-void (*del)(void **ct));
-t_glist		*ft_glstget(t_glist *start, int n);
-t_glist		*ft_glstget2d(t_glist *start, int i, int j);
-void		ft_glstiter(t_glist *lst, void (*f)(t_glist *elem));
-t_glist		*ft_glstmap(t_glist *lst, t_glist *(*f)(t_glist *elem));
-t_glist		*ft_glstnew(void **ct, void (*del)(void **ct));
-void		ft_glstpush(t_glist **start, t_glist *link);
-
-#endif /* !FT_GLSTS_H */
-
 
 #ifndef LIBFT_H
 # define LIBFT_H
