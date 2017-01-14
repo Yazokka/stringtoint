@@ -1,22 +1,33 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gciub <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/25 19:22:02 by gciub             #+#    #+#             */
+/*   Updated: 2016/11/25 19:22:33 by gciub            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <string.h>
 
 void	*ft_memccpy(void *s1, const void *s2, int c, size_t n)
 {
-	char	*c1;
-	char	*c2;
-	size_t	cur;
+	unsigned int	i;
+	unsigned char	*dst;
+	unsigned char	*src;
+	unsigned char	x;
 
-	if (s1 == s2 || n == 0)
-		return (s1);
-	cur = 0;
-	c1 = (char *)s1;
-	c2 = (char *)s2;
-	while (cur < n)
+	dst = (unsigned char*)s1;
+	src = (unsigned char*)s2;
+	x = (unsigned char)c;
+	i = 0;
+	while (i < n)
 	{
-		c1[cur] = c2[cur];
-		if (c1[cur] == c)
-			return (c1 + cur + 1);
-		cur++;
+		if ((*dst++ = *src++) == x)
+			return (dst);
+		i++;
 	}
 	return (NULL);
 }

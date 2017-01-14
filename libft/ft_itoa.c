@@ -1,46 +1,53 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gciub <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/25 19:08:45 by gciub             #+#    #+#             */
+/*   Updated: 2016/11/25 19:17:02 by gciub            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include <string.h>
+#include "libft.h"
 
-static void		lengths(int n, size_t *len, int *weight)
+static void	itoa_isnegative(int *n, int *negative)
 {
-	*len = 1;
-	if (n >= 0)
+	if (*n < 0)
 	{
-		*len = 0;
-		n = -n;
-	}
-	*weight = 1;
-	while (n / *weight < -9)
-	{
-		*weight *= 10;
-		*len += 1;
+		*n *= -1;
+		*negative = 1;
 	}
 }
 
-char			*ft_itoa(int n)
+char		*ft_itoa(int n)
 {
-	size_t		len;
-	int			weight;
-	size_t		cur;
-	char		*str;
+	int		tmpn;
+	int		len;
+	int		negative;
+	char	*str;
 
-	lengths(n, &len, &weight);
-	str = (char *)malloc(sizeof(*str) * (len + 1));
-	if (str == NULL)
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
+	tmpn = n;
+	len = 2;
+	negative = 0;
+	itoa_isnegative(&n, &negative);
+	while (tmpn /= 10)
+		len++;
+	len += negative;
+	if ((str = (char*)malloc(sizeof(char) * len)) == NULL)
 		return (NULL);
-	cur = 0;
-	if (n < 0)
+	str[--len] = '\0';
+	while (len--)
 	{
-		str[cur] = '-';
-		cur++;
+		str[len] = n % 10 + '0';
+		n = n / 10;
 	}
-	if (n > 0)
-		n = -n;
-	while (weight >= 1)
-	{
-		str[cur++] = -(n / weight % 10) + 48;
-		weight /= 10;
-	}
-	str[cur] = '\0';
+	if (negative)
+		str[0] = '-';
 	return (str);
 }
